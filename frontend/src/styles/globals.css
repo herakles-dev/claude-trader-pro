@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply font-sans antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Components */
+@layer components {
+  .card {
+    @apply bg-gray-800 rounded-lg border border-gray-700 shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:border-gray-600 hover:shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-100 font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .select-field {
+    @apply w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-green-900/30 text-green-400 border border-green-700;
+  }
+
+  .badge-danger {
+    @apply bg-red-900/30 text-red-400 border border-red-700;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-900/30 text-yellow-400 border border-yellow-700;
+  }
+
+  .badge-info {
+    @apply bg-blue-900/30 text-blue-400 border border-blue-700;
+  }
+
+  .stat-card {
+    @apply card p-6 space-y-2;
+  }
+
+  .stat-label {
+    @apply text-sm text-gray-400 font-medium;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-gray-100;
+  }
+
+  .stat-change {
+    @apply text-sm font-medium;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-gray-700 rounded;
+  }
+
+  .pulse-green {
+    @apply animate-pulse-slow text-green-400;
+  }
+
+  .pulse-red {
+    @apply animate-pulse-slow text-red-400;
+  }
+}
+
+/* Loading Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #1f2937 0%,
+    #374151 50%,
+    #1f2937 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* TradingView Widget Overrides */
+.tradingview-widget-container {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Chart Tooltips */
+.recharts-tooltip-wrapper {
+  @apply outline-none;
+}
+
+.custom-tooltip {
+  @apply card p-4 shadow-xl;
+}
+
+/* Number Formatting */
+.number-positive {
+  @apply text-green-400;
+}
+
+.number-negative {
+  @apply text-red-400;
+}
+
+.number-neutral {
+  @apply text-gray-400;
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+  .responsive-table {
+    @apply block overflow-x-auto;
+  }
+  
+  .responsive-table thead {
+    @apply hidden;
+  }
+  
+  .responsive-table tr {
+    @apply block mb-4 border border-gray-700 rounded-lg;
+  }
+  
+  .responsive-table td {
+    @apply block text-right;
+  }
+  
+  .responsive-table td::before {
+    content: attr(data-label);
+    @apply float-left font-medium text-gray-400;
+  }
+}
