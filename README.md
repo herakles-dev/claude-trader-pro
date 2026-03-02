@@ -29,7 +29,7 @@ AI-powered cryptocurrency trading platform with real-time market analysis, confi
 
 ## Key Features
 
-- **Multi-model AI predictions** — Claude and Gemini providers with automatic confidence calibration against historical accuracy
+- **Multi-model AI predictions** — Claude Sonnet 4 and Gemini 2.0 Flash providers with automatic confidence calibration against historical accuracy
 - **Real-time WebSocket streaming** — Live market data, prediction updates, and trade notifications pushed to the dashboard
 - **Risk management engine** — Configurable daily loss limits, max drawdown, position sizing, volatility-adjusted exposure, cooldown periods
 - **Backtesting** — Run prediction strategies against historical data with configurable parameters
