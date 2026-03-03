@@ -133,7 +133,7 @@ async def fetch_current_price(symbol: str) -> Optional[float]:
     try:
         # Use the unified data API to get current market data
         import sys
-        sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/external_data_sources')
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'external_data_sources'))
         sys.path.insert(0, '/app/external_data_sources')  # Container path
         from unified_data_api import UnifiedCryptoDataAPI
 

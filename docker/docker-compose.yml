@@ -142,8 +142,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - /home/user/OctoBot/external-data-sources:/app/external_data_api:ro
-      - /home/user/OctoBot/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
+      - ${OCTOBOT_DIR:-./octobot}/external-data-sources:/app/external_data_api:ro
+      - ${OCTOBOT_DIR:-./octobot}/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
     depends_on:
       claude-trader-postgres:
         condition: service_healthy
@@ -172,9 +172,9 @@ services:
     ports:
       - "8109:5001"
     volumes:
-      - /home/user/OctoBot/user:/octobot/user
-      - /home/user/OctoBot/tentacles:/octobot/tentacles
-      - /home/user/OctoBot/logs:/octobot/logs
+      - ${OCTOBOT_DIR:-./octobot}/user:/octobot/user
+      - ${OCTOBOT_DIR:-./octobot}/tentacles:/octobot/tentacles
+      - ${OCTOBOT_DIR:-./octobot}/logs:/octobot/logs
     environment:
       - OCTOBOT_PROFILE=claude_trader
     command: ["python", "start.py", "--simulate"]

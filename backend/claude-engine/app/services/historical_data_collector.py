@@ -2,7 +2,7 @@
 Historical Data Collector for OctoBot Backtesting
 
 Collects and maintains OHLCV historical data for backtesting validation.
-Outputs OctoBot-compatible JSON files to /home/user/OctoBot/backtesting/data_files/
+Outputs OctoBot-compatible JSON files to $OCTOBOT_DATA_DIR (default: ./octobot/backtesting/data_files/)
 
 Features:
 - Fetches 6 months of 1H OHLCV data from Binance via CCXT
@@ -27,7 +27,7 @@ import ccxt.async_support as ccxt
 logger = logging.getLogger(__name__)
 
 # Configuration
-OCTOBOT_DATA_DIR = Path("/home/user/OctoBot/backtesting/data_files")
+OCTOBOT_DATA_DIR = Path(os.getenv("OCTOBOT_DATA_DIR", "./octobot/backtesting/data_files"))
 DEFAULT_SYMBOLS = ["BTC/USDT", "ETH/USDT"]
 DEFAULT_TIMEFRAME = "1h"
 DEFAULT_MONTHS = 6

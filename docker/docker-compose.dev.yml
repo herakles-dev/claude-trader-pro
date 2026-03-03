@@ -40,7 +40,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_DB=trader_db
       - POSTGRES_USER=trader
-      - POSTGRES_PASSWORD=your-postgres-password-here
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
     command: npm run dev
     depends_on:
       - claude-trader-engine-dev
@@ -58,12 +58,12 @@ services:
       - "8000:8000"
     volumes:
       - ./backend/claude-engine/app:/app/app:ro
-      - /home/user/OctoBot/external-data-sources:/app/external_data_sources:ro
-      - /home/user/OctoBot/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
+      - ${OCTOBOT_DIR:-./octobot}/external-data-sources:/app/external_data_sources:ro
+      - ${OCTOBOT_DIR:-./octobot}/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
     environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - TAAPI_API_KEY=${TAAPI_API_KEY}
-      - DATABASE_URL=postgresql://trader:your-postgres-password-here@postgres:5432/trader_db
+      - DATABASE_URL=postgresql://trader:${POSTGRES_PASSWORD:-changeme}@postgres:5432/trader_db
       - ENVIRONMENT=development
       - PYTHONUNBUFFERED=1
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload

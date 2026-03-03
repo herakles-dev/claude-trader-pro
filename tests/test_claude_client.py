@@ -19,7 +19,8 @@ from unittest.mock import Mock, patch, MagicMock
 from datetime import datetime
 
 import sys
-sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/app')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'claude-engine', 'app'))
 
 from services.claude_client import ClaudeClient
 

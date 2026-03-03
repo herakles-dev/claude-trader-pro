@@ -17,17 +17,18 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from decimal import Decimal
 
-# Database configuration
+# Database configuration (from environment)
+import os
 DB_CONFIG = {
-    'host': 'localhost',
-    'port': 5432,
-    'database': 'trader_db',
-    ''user': 'trader',
-    'password': 'your-password-here',
+    'host': os.getenv('POSTGRES_HOST', 'localhost'),
+    'port': int(os.getenv('POSTGRES_PORT', '5432')),
+    'database': os.getenv('POSTGRES_DB', 'trader_db'),
+    'user': os.getenv('POSTGRES_USER', 'trader'),
+    'password': os.getenv('POSTGRES_PASSWORD', 'changeme'),
     'schema': 'trading_predictions'
 }
 
-CONNECTION_STRING = f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
+CONNECTION_STRING = os.getenv('DATABASE_URL', f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}")
 
 
 @pytest.fixture(scope="module")

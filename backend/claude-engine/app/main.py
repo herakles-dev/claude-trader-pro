@@ -27,8 +27,9 @@ from sqlalchemy.exc import OperationalError
 # Import application components
 # Add external data sources to Python path (works in both dev and container)
 import os
-if os.path.exists('/home/user/OctoBot'):
-    sys.path.insert(0, '/home/user/OctoBot')
+octobot_dir = os.getenv('OCTOBOT_DIR', '/app/external_data_sources')
+if os.path.exists(octobot_dir):
+    sys.path.insert(0, octobot_dir)
 if os.path.exists('/app/external_data_sources'):
     sys.path.insert(0, '/app/external_data_sources')
 

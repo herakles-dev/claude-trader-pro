@@ -153,7 +153,7 @@ External Services:
 
 ### 1. API Gateway (`claude-trader-gateway`)
 
-**Location:** `/home/user/claude-trader-pro/backend/api-gateway/`  
+**Location:** `backend/api-gateway/`
 **Port:** 3001
 **Technology:** Node.js 18 + Express.js
 **Container:** `claude-trader-gateway`
@@ -216,7 +216,7 @@ POSTGRES_PASSWORD=your-password-here
 
 ### 2. Claude Engine (`claude-trader-engine`)
 
-**Location:** `/home/user/claude-trader-pro/backend/claude-engine/`  
+**Location:** `backend/claude-engine/`
 **Port:** 8000
 **Technology:** Python 3.11 + FastAPI
 **Container:** `claude-trader-engine`
@@ -330,7 +330,7 @@ CREATE INDEX idx_predictions_type ON trading_predictions(prediction_type);
 
 ### 3. Frontend (React SPA)
 
-**Location:** `/home/user/claude-trader-pro/frontend/`  
+**Location:** `frontend/`
 **Deployed:** `/var/www/your-domain/`
 **Technology:** React 18 + Vite + TailwindCSS
 **Public URL:** `https://your-domain.example.com`
@@ -670,7 +670,7 @@ docker restart claude-trader-gateway
 docker restart claude-trader-engine
 
 # Deploy frontend
-cd /home/user/claude-trader-pro/frontend
+cd frontend
 npm run build
 sudo rm -rf /var/www/your-domain/*
 sudo cp -r dist/* /var/www/your-domain/

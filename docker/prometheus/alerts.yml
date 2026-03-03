@@ -42,7 +42,7 @@ groups:
         annotations:
           summary: "High error rate detected for {{ $labels.job }}"
           description: "Error rate is {{ $value | humanizePercentage }} (threshold: 5%)"
-          runbook: "Check logs: /home/user/scripts/observability-cli/query-logs.sh {{ $labels.service }} error --since 1h"
+          runbook: "Check logs: docker logs {{ $labels.service }} --since 1h | grep error"
 
       # Claude API Performance Alerts
       - alert: ClaudeAPIHighLatency

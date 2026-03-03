@@ -122,8 +122,8 @@ services:
       - LOG_LEVEL=INFO
       - PYTHONUNBUFFERED=1
     volumes:
-      - /home/user/OctoBot/external-data-sources:/app/external_data_api:ro
-      - /home/user/OctoBot/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
+      - ${OCTOBOT_DIR:-./octobot}/external-data-sources:/app/external_data_api:ro
+      - ${OCTOBOT_DIR:-./octobot}/tentacles/Evaluator/TA/claude_evaluator:/app/claude_evaluator:ro
     depends_on:
       postgres:
         condition: service_healthy

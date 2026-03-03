@@ -22,7 +22,8 @@ from unittest.mock import Mock, patch, AsyncMock, MagicMock
 from datetime import datetime, timedelta
 
 import sys
-sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/external_data_sources')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'claude-engine', 'external_data_sources'))
 
 from unified_data_api import (
     UnifiedCryptoDataAPI,

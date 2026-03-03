@@ -20,8 +20,9 @@ from datetime import datetime, timedelta
 from typing import Dict, Any
 
 import sys
-sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/app')
-sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/external_data_sources')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'claude-engine', 'app'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'claude-engine', 'external_data_sources'))
 
 from services.unified_data_client import UnifiedDataClient
 from data_schemas import MarketData, SentimentData, TechnicalData, MarketSnapshot, DataSource

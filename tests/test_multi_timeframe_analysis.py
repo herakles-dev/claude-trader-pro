@@ -10,7 +10,8 @@ from unittest.mock import Mock, AsyncMock, MagicMock
 from datetime import datetime
 
 import sys
-sys.path.insert(0, '/home/user/claude-trader-pro/backend/claude-engine/external_data_sources')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend', 'claude-engine', 'external_data_sources'))
 
 from multi_timeframe_analysis import (
     MultiTimeframeAnalysis,

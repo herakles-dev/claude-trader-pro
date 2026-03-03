@@ -19,7 +19,7 @@ groups:
           description: "Current accuracy: {{ $value | humanizePercentage }} (target: 85%)"
           impact: "User trust degraded, trading decisions less reliable"
           runbook: |
-            1. Check recent predictions: /home/user/scripts/observability-cli/query-logs.sh claude-trader-engine "Prediction validated" --since 1h
+            1. Check recent predictions: docker logs claude-trader-engine --since 1h | grep "Prediction validated"
             2. Verify TAAPI Pro data quality: curl localhost:8000/api/v1/health
             3. Review confidence calibration metrics
             4. Check for market regime changes (high volatility, news events)
@@ -40,7 +40,7 @@ groups:
           runbook: |
             IMMEDIATE ACTIONS:
             1. Page on-call engineer
-            2. Consider emergency rollback: cd /home/user/claude-trader-pro && ./rollback.sh
+            2. Consider emergency rollback: cd claude-trader-pro && ./rollback.sh
             3. Investigate root cause:
                - TAAPI Pro API issues?
                - Model degradation?
