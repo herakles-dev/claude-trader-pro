@@ -50,6 +50,27 @@ docker compose -f docker/docker-compose.dev.yml up -d
 
 Requires: Docker, API keys for at least one AI provider (Claude or Gemini).
 
+## Running Tests
+
+```bash
+# API gateway unit tests (Jest)
+cd backend/api-gateway && npm install && npm test
+
+# Claude Engine + integration suite (pytest)
+pip install -r tests/requirements.txt -r backend/claude-engine/requirements.txt
+pytest tests/
+
+# Full JS suite: API, WebSocket, load (k6), E2E (Playwright)
+cd tests && npm install
+npm run test:api
+npm run test:websocket
+npm run test:e2e        # needs `npx playwright install` first
+```
+
+Most of the suite runs against mocks. The E2E and load tests expect a running
+stack (`FRONTEND_URL`, `API_GATEWAY_URL`, `WS_URL` env vars, defaulting to
+`localhost`), see `.env.example`.
+
 ## Project Structure
 
 ```
